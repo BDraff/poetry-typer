@@ -19,19 +19,16 @@ def type_with_pause(text, pause_duration=0.3):
 
 
 with open(filename) as poem_file:
-	print(" -- Waiting a few seconds -- ")
-	# Give yourself a few seconds to switch to the window where you want to send keystrokes
-	time.sleep(3)
-	while True:
-		line = poem_file.readline()
-		if len(line) <= 1:
-			break
-		if '#' in line: # Remove markdown comments
-			continue
-		type_with_pause(line)
+    print(" -- Waiting a few seconds -- ")
+    # Give yourself a few seconds to switch to the window where you want to send keystrokes
+    time.sleep(3)
+    for line in poem_file:
+        if '#' in line: # Remove markdown comments
+            continue
+        type_with_pause(line)
 
-		# Pause between lines
-		time.sleep(3)
+        # Pause between lines
+        time.sleep(3)
 
 time.sleep(0.1)
 
